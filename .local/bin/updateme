@@ -1,0 +1,24 @@
+#!/bin/bash
+
+handle_error() {
+    echo -e "\e[31mupdateme error:\e[0m $1"
+    exit 1
+}
+
+pfx="\e[32mUM\e[0m"
+
+# run paru (checks for both pacman and aur packages)
+echo -e "$pfx running paru..."
+paru || handle_error "paru update failed!"
+# sudo pacman -Syu || handle_error "pacman update failed!"
+
+# update flatpaks
+echo -e "$pfx checking for flatpak updates..."
+flatpak update || handle_error "flatpak update failed!"
+
+# update skyblock mods
+echo -e "$pfx running skyblock mods updater..."
+modupdater
+
+# finished
+echo -e "\e[32mupdateme finished\e[0m"

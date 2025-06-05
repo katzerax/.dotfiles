@@ -1,0 +1,4 @@
+#!/bin/bash
+
+USERNAME="${1:-k}"
+ssh "$USERNAME@192.168.254.38" -p 22
