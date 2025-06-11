@@ -123,3 +123,4 @@ alias mirrors='sudo reflector --verbose --country US --latest 15 --protocol http
 alias vacuum='sudo journalctl --vacuum-time=2weeks'
 alias orphans='pacman -Qtdq | sudo pacman -Rns -'
 alias about='pacman -Qi'
+alias pacnew='sudo pacdiff'
