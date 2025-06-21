@@ -26,14 +26,42 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# woooooo my aliases
-alias ls='ls --color=auto'
+# ---- Aliases ----
+# basically the same command as base
+alias ls='ls -aFh --color=always'
 alias grep='grep --color=auto'
-alias libreo='QT_QPA_PLATFORM=xcb libreoffice'
+# -----------------
+# almost a script
 alias mirrors='sudo reflector --verbose --country US --latest 15 --protocol http,https --sort rate --save /etc/pacman.d/mirrorlist'
 alias vacuum='sudo journalctl --vacuum-time=2weeks'
 alias orphans='pacman -Qtdq | sudo pacman -Rns -'
+alias paruf="paru -Slq | fzf --multi --preview 'paru -Sii {1}' --preview-window=down:75% | xargs -ro paru -S"
+# -----------------
+# slightly modified commands because i forget them
 alias about='pacman -Qi'
 alias pacnew='sudo pacdiff'
 alias regen='sudo mkinitcpio -P'
 alias clearcache='paru -Sccd'
+alias bd='cd "$OLDPWD"'
+# -----------------
+# fixes/workarounds
+alias libreo='QT_QPA_PLATFORM=xcb libreoffice'
+# -----------------
+# chmod
+alias mx='chmod a+x'
+alias 000='chmod -R 000'
+alias 644='chmod -R 644'
+alias 666='chmod -R 666'
+alias 755='chmod -R 755'
+alias 777='chmod -R 777'
+# -----------------
+# cd automatically display ls
+cd ()
+{
+	if [ -n "$1" ]; then
+		builtin cd "$@" && ls
+	else
+		builtin cd ~ && ls
+	fi
+}
+# -----------------
