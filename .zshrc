@@ -47,13 +47,13 @@ alias bd='cd "$OLDPWD"'
 # fixes/workarounds
 alias libreo='QT_QPA_PLATFORM=xcb libreoffice'
 # -----------------
-# chmod
-alias mx='chmod a+x'
-alias 000='chmod -R 000'
-alias 644='chmod -R 644'
-alias 666='chmod -R 666'
-alias 755='chmod -R 755'
-alias 777='chmod -R 777'
+# chmod (-R is recursively, this can be dangerous)
+alias mx='chmod a+x' # a = 'all users', x = 'executable'
+alias 000='chmod -R 000' # removes read, write, execute perms for everyone
+alias 644='chmod -R 644' # owner can read and rwite, group/others can read
+alias 666='chmod -R 666' # everyone can read and write
+alias 755='chmod -R 755' # owner can read write execute, group others can read/execute
+alias 777='chmod -R 777' # everyone can read write and execute
 # -----------------
 # cd automatically display ls
 cd ()
