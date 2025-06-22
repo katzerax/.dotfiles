@@ -35,7 +35,8 @@ alias grep='grep --color=auto'
 alias mirrors='sudo reflector --verbose --country US --latest 15 --protocol http,https --sort rate --save /etc/pacman.d/mirrorlist'
 alias vacuum='sudo journalctl --vacuum-time=2weeks'
 alias orphans='pacman -Qtdq | sudo pacman -Rns -'
-alias paruf="paru -Slq | fzf --multi --preview 'paru -Sii {1}' --preview-window=down:75% | xargs -ro paru -S"
+alias paruf='paru -Slq | fzf --multi --preview 'paru -Sii {1}' --preview-window=down:75% | xargs -ro paru -S'
+alias update='paru;flatpak update'
 # -----------------
 # slightly modified commands because i forget them
 alias about='pacman -Qi'
