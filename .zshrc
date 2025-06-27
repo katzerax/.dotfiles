@@ -8,11 +8,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-
 export ZSH="$HOME/.oh-my-zsh"
-
 ZSH_THEME="powerlevel10k/powerlevel10k"
-
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -26,29 +23,87 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# ---- Distro Detection ----
+# if [[ -f /etc/os-release ]]; then
+# 	. /etc/os-release
+# 	case "$ID" in
+# 		arch|cachyos|endeavouros)
+# 			export PKG_MANAGER="pacman"
+# 			;;
+# 		debian|ubuntu|kubuntu|linuxmint)
+# 			export PKG_MANAGER="apt"
+# 			;;
+# 		*)
+# 			export PKG_MANAGER="unknown"
+# 			;;
+# 	esac
+# else
+# 	export PKG_MANAGER="unknown"
+# fi
+
 # ---- Aliases ----
+# if [[ "$PKG_MANAGER" == "pacman" ]]; then
+#
+#
+# 	# CAUTION POTENTIALLY DANGEROUS
+# 	checkpac() {
+# 		echo "=== checking for pacman lock ==="
+# 		if [[ -e /var/lib/pacman/db.lck ]]; then
+# 			ls -l /var/lib/pacman/db.lck
+# 		else
+# 			echo "no lock file found"
+# 		fi
+# 		echo
+# 		echo "=== active pacman or paru processes ==="
+# 		ps aux | grep -E '[p]acman|[p]aru'
+# 		echo
+# 		if [[ -e /var/lib/pacman/db.lck ]]; then
+# 			echo -n "delete /var/lib/pacman/db.lck? (y/N) "
+# 			read resp1
+# 			if [[ "$resp1" =~ ^[Yy]$ ]]; then
+# 				echo -n "absolutely sure? this should only be done if pacman is not running. (y/N) "
+# 				read resp2
+# 				if [[ "$resp2" =~ ^[Yy]$ ]]; then
+# 					echo "deleting lock file..."
+# 					sudo rm -v /var/lib/pacman/db.lck
+# 				else
+# 					echo "aborted"
+# 				fi
+# 			else
+# 				echo "no action taken"
+# 			fi
+# 		fi
+# 	}
+# 	# --------
+# elif [[ "$PKG_MANAGER" == "apt" ]]; then
+# 	alias update='echo "you use apt!"; (command -v nala >/dev/null && sudo nala update && sudo nala upgrade) || (sudo apt update && sudo apt upgrade); flatpak update' # untested
+# else
+# 	echo "unknown package manager"
+# fi
+
+
+alias update='paru;flatpak update'
+alias orphans='pacman -Qtdq | sudo pacman -Rns -'
+alias mirrors='sudo reflector --verbose --country US --latest 15 --protocol http,https --sort rate --save /etc/pacman.d/mirrorlist'
+alias about='pacman -Qi'
+alias pacnew='sudo pacdiff'
+alias clearcache='paru -Sccd'
+alias regen='sudo mkinitcpio -P'
+
 # basically the same command as base
 alias ls='ls -aFh --color=always'
 alias grep='grep --color=auto'
 # -----------------
 # almost a script
-alias mirrors='sudo reflector --verbose --country US --latest 15 --protocol http,https --sort rate --save /etc/pacman.d/mirrorlist'
 alias vacuum='sudo journalctl --vacuum-time=2weeks'
-alias orphans='pacman -Qtdq | sudo pacman -Rns -'
-alias paruf='paru -Slq | fzf --multi --preview 'paru -Sii {1}' --preview-window=down:75% | xargs -ro paru -S'
-alias update='paru;flatpak update'
 # -----------------
 # slightly modified commands because i forget them
-alias about='pacman -Qi'
-alias pacnew='sudo pacdiff'
-alias regen='sudo mkinitcpio -P'
-alias clearcache='paru -Sccd'
 alias bd='cd "$OLDPWD"'
 # -----------------
 # fixes/workarounds
 alias libreo='QT_QPA_PLATFORM=xcb libreoffice'
 # -----------------
-# chmod (-R is recursively, this can be dangerous)
+# chmod (-R is recursively, CAUTION this can be dangerous)
 alias mx='chmod a+x' # a = 'all users', x = 'executable'
 alias 000='chmod -R 000' # removes read, write, execute perms for everyone
 alias 644='chmod -R 644' # owner can read and rwite, group/others can read
