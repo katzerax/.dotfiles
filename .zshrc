@@ -89,6 +89,7 @@ alias about='pacman -Qi'
 alias pacnew='sudo pacdiff'
 alias clearcache='paru -Sccd'
 alias regen='sudo mkinitcpio -P'
+alias grubit='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 
 # basically the same command as base
 alias ls='ls -aFh --color=always'
