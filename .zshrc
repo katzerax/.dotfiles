@@ -23,65 +23,6 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# ---- Distro Detection ----
-# if [[ -f /etc/os-release ]]; then
-# 	. /etc/os-release
-# 	case "$ID" in
-# 		arch|cachyos|endeavouros)
-# 			export PKG_MANAGER="pacman"
-# 			;;
-# 		debian|ubuntu|kubuntu|linuxmint)
-# 			export PKG_MANAGER="apt"
-# 			;;
-# 		*)
-# 			export PKG_MANAGER="unknown"
-# 			;;
-# 	esac
-# else
-# 	export PKG_MANAGER="unknown"
-# fi
-
-# ---- Aliases ----
-# if [[ "$PKG_MANAGER" == "pacman" ]]; then
-#
-#
-# 	# CAUTION POTENTIALLY DANGEROUS
-# 	checkpac() {
-# 		echo "=== checking for pacman lock ==="
-# 		if [[ -e /var/lib/pacman/db.lck ]]; then
-# 			ls -l /var/lib/pacman/db.lck
-# 		else
-# 			echo "no lock file found"
-# 		fi
-# 		echo
-# 		echo "=== active pacman or paru processes ==="
-# 		ps aux | grep -E '[p]acman|[p]aru'
-# 		echo
-# 		if [[ -e /var/lib/pacman/db.lck ]]; then
-# 			echo -n "delete /var/lib/pacman/db.lck? (y/N) "
-# 			read resp1
-# 			if [[ "$resp1" =~ ^[Yy]$ ]]; then
-# 				echo -n "absolutely sure? this should only be done if pacman is not running. (y/N) "
-# 				read resp2
-# 				if [[ "$resp2" =~ ^[Yy]$ ]]; then
-# 					echo "deleting lock file..."
-# 					sudo rm -v /var/lib/pacman/db.lck
-# 				else
-# 					echo "aborted"
-# 				fi
-# 			else
-# 				echo "no action taken"
-# 			fi
-# 		fi
-# 	}
-# 	# --------
-# elif [[ "$PKG_MANAGER" == "apt" ]]; then
-# 	alias update='echo "you use apt!"; (command -v nala >/dev/null && sudo nala update && sudo nala upgrade) || (sudo apt update && sudo apt upgrade); flatpak update' # untested
-# else
-# 	echo "unknown package manager"
-# fi
-
-
 alias update='paru;flatpak update'
 alias orphans='pacman -Qtdq | sudo pacman -Rns -'
 alias mirrors='sudo reflector --verbose --country US --latest 15 --protocol http,https --sort rate --save /etc/pacman.d/mirrorlist'
@@ -97,6 +38,7 @@ alias grep='grep --color=auto'
 # -----------------
 # almost a script
 alias vacuum='sudo journalctl --vacuum-time=2weeks'
+alias davinki='sudo /usr/bin/perl -pi -e 's/\x74\x11\xe8\x21\x23\x00\x00/\xeb\x11\xe8\x21\x23\x00\x00/g' /opt/resolve/bin/resolve;cd /opt/resolve/libs && sudo mkdir -p disabled-libraries && sudo mv libglib* libgio* libgmodule* disabled-libraries'
 # -----------------
 # slightly modified commands because i forget them
 alias bd='cd "$OLDPWD"'
