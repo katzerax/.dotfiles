@@ -38,7 +38,6 @@ alias grep='grep --color=auto'
 # -----------------
 # almost a script
 alias vacuum='sudo journalctl --vacuum-time=2weeks'
-alias davinki='sudo /usr/bin/perl -pi -e 's/\x74\x11\xe8\x21\x23\x00\x00/\xeb\x11\xe8\x21\x23\x00\x00/g' /opt/resolve/bin/resolve;cd /opt/resolve/libs && sudo mkdir -p disabled-libraries && sudo mv libglib* libgio* libgmodule* disabled-libraries'
 # -----------------
 # slightly modified commands because i forget them
 alias bd='cd "$OLDPWD"'
