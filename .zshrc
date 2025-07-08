@@ -41,6 +41,7 @@ alias vacuum='sudo journalctl --vacuum-time=2weeks'
 # -----------------
 # slightly modified commands because i forget them
 alias bd='cd "$OLDPWD"'
+alias mountfs='sudo mount -a'
 # -----------------
 # fixes/workarounds
 alias libreo='QT_QPA_PLATFORM=xcb libreoffice'
