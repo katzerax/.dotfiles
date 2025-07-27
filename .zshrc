@@ -23,6 +23,10 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+
+export MANPAGER="less -R --use-color -Dd+r -Du+b"
+
+
 alias update='paru;flatpak update'
 alias orphans='pacman -Qtdq | sudo pacman -Rns -'
 alias mirrors='sudo reflector --verbose --country US --latest 15 --protocol http,https --sort rate --save /etc/pacman.d/mirrorlist'
