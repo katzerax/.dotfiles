@@ -47,9 +47,6 @@ alias vacuum='sudo journalctl --vacuum-time=2weeks'
 alias bd='cd "$OLDPWD"'
 alias mountfs='sudo mount -a'
 # -----------------
-# fixes/workarounds
-alias libreo='QT_QPA_PLATFORM=xcb libreoffice'
-# -----------------
 # chmod (-R is recursively, CAUTION this can be dangerous)
 alias mx='chmod a+x' # a = 'all users', x = 'executable'
 alias 000='chmod -R 000' # removes read, write, execute perms for everyone
@@ -68,3 +65,6 @@ cd ()
 	fi
 }
 # -----------------
+
+
+export PATH=$PATH:/home/k/.spicetify

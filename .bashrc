@@ -17,3 +17,5 @@ alias vacuum='sudo journalctl --vacuum-time=2weeks'
 alias orphans='pacman -Qtdq | sudo pacman -Rns -'
 
 hyfetch
+
+export PATH=$PATH:/home/k/.spicetify
