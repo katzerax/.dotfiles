@@ -2,7 +2,7 @@
 If you're here for the Wiki, see https://github.com/katzerax/.dotfiles/wiki.
 
 This repository contains my Arch specific dotfiles, some of which I use on other distros too. I use it with Stow, a GNU symlink farm tool. 
-Essentially, I keep a .dotfiles directory in my home folder, run `stow .`, and it creates symlinks to those files.
+Essentially, I keep a .dotfiles directory in my home folder, run `stow .` within that .dotfiles/ directory, and it creates symlinks to those files inside of the upper home folder.
 
 The main reason to use something like this is for versioning, I can keep a commit history of my config files, and also I can easily synchronize those files across devices.
 This also allows me to show other people my particular config files.
