@@ -26,5 +26,3 @@ Reset the now merged files to the previous git cloned file (overwriting previous
 ```
 git reset --hard
 ```
-
-If you're here for the fixes, see the Wiki
