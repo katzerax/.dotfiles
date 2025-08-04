@@ -5,7 +5,7 @@ This repository contains my Arch specific dotfiles, some of which I use on other
 Essentially, I keep a .dotfiles directory in my home folder, run `stow .` within that .dotfiles/ directory, and it creates symlinks to those files inside of the upper home folder.
 
 The main reason to use something like this is for versioning, I can keep a commit history of my config files, and also I can easily synchronize those files across devices.
-This also allows me to show other people my particular config files.
+This also allows me to show other people my particular config files by linking them to this GitHub repository.
 
 ## Setting up this repo
 ***In your home directory;***
