@@ -1,4 +1,6 @@
 # K's Arch Linux Dotfiles (And Guides)
+If you're here for the Wiki, see https://github.com/katzerax/.dotfiles/wiki.
+
 This repository contains my Arch specific dotfiles, some of which I use on other distros too. I use it with Stow, a GNU symlink farm tool. 
 Essentially, I keep a .dotfiles directory in my homefolder, run `stow .`, and it creates symlinks to those files.
 
