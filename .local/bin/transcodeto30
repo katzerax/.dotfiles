@@ -1,0 +1,12 @@
+#!/bin/bash
+if [ -z "$1" ]; then
+    echo "something went wrong stupid shithead"
+    exit 1
+fi
+
+input="$1"
+output="${input%.*}_output.mp4"
+
+ffmpeg -i "$input" -r 30 -c:v libx264 -crf 23 "$output"
+
+echo "completed, output: $output"
